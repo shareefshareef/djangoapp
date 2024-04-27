@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block blockone %}
+<body class="bg-dark text-white">
+    <div class="container mt-5">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" id="message">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+        <h2>Update Tweet</h2>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            
+        
+
+            <div class="form-group my-3">
+                <label for="topic">Topic</label>
+                <input type="text" class="form-control my-2" id="topic" name="topic" placeholder="Enter topic" value="{{retrotweets.topic}}" required>
+            </div>
+            <div class="form-group my-3">
+                <label for="tweetContent">Tweet Content</label>
+                <textarea class="form-control my-2" id="tweetContent" name="tweet_content" rows="3" placeholder="Enter tweet content" required>{{retrotweets.tweet}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Update Tweet</button>
+        </form>
+    </div>
+</body>
+{% endblock blockone %}
